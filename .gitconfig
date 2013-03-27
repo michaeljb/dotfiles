@@ -1,0 +1,10 @@
+[user]
+	name = Michael Brandt
+	emal = michael.j.brandt@colorado.edu
+	email = michaelbrandt5@gmail.com
+[color]
+	ui = true
+[core]
+	editor = /Applications/Emacs.app/Contents/MacOS/Emacs
+[push]
+	default = simple
