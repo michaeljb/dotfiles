@@ -1,5 +1,5 @@
-alias l='ls -Gal'
-alias ll='ls -Gl'
+alias l='ls -Gal $@ | grep -v .DS_Store'
+alias ll='ls -Gl $@ | grep -v .DS_Store'
 
 alias emacs='open -a /Applications/Emacs.app'
 export VISUAL=/Applications/Emacs.app/Contents/MacOS/Emacs;
