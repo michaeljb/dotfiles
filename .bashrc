@@ -18,4 +18,8 @@ export PATH="/usr/local/sbin:/Users/michael/local:$PATH"
 
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
+export PATH=$PATH:/usr/local/share/npm/bin/
+
 export PATH="~/local/git:$PATH"
+
+source ~/.git-completion.bash
