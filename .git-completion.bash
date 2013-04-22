@@ -1091,6 +1091,10 @@ _git_bundle ()
 
 _git_checkout ()
 {
+	if [ $cword = 3 ] && [ "--" = ${words[2]} ]; then
+	    __git_complete_index_file "--modified"
+	fi
+
 	__git_has_doubledash && return
 
 	case "$cur" in
