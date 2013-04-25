@@ -1,0 +1,73 @@
+# SizeUp commands translated to Slate
+
+# TODOs
+#   Spaces Actions
+#   fix SnapBack
+#   option to resize windows proportionally with Multiple Monitor actions
+#   option to resize window absolutely instead of relative to screen size with Center
+#   option to not resize window on Center
+#   screen edge margins
+#   partition (between window margins) (x and y axis margins)
+#   split screen partition percentages
+#   quarter screen partition percentages
+#   SizeUp's "best effort" behavior
+
+
+# settings for Center
+alias centerWidth 0.75
+alias centerHeight 0.75
+alias centerXoffset screenSizeX*(1-${centerWidth})/2
+alias centerYoffset screenSizeY*(1-${centerHeight})/2
+
+
+# settings for SnapBack
+config undoMaxStackSize 0
+config undoOps move,push,corner,throw
+
+
+# alias definitions to match SizeUp command names
+
+alias Left move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias Right move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias Up push top bar-resize:screenSizeY/2
+alias Down push bottom bar-resize:screenSizeY/2
+
+alias UpperLeft corner top-left resize:screenSizeX/2;screenSizeY/2
+alias UpperRight corner top-right resize:screenSizeX/2;screenSizeY/2
+alias LowerLeft corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias LowerRight corner bottom-right resize:screenSizeX/2;screenSizeY/2
+
+alias FullScreen move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias Center move screenOriginX+${centerXoffset};screenOriginY+${centerYoffset} screenSizeX*${centerWidth};screenSizeY*${centerHeight}
+
+alias SnapBack undo
+
+alias PrevMonitor throw previous
+alias NextMonitor throw previous
+
+# alias SpacePrev
+# alias SpaceNext
+
+
+# bindings
+
+bind h:ctrl;alt;cmd ${Left}
+bind l:ctrl;alt;cmd ${Right}
+bind k:ctrl;alt;cmd ${Up}
+bind j:ctrl;alt;cmd ${Down}
+
+bind h:shift;ctrl;alt ${UpperLeft}
+bind k:shift;ctrl;alt ${UpperRight}
+bind j:shift;ctrl;alt ${LowerLeft}
+bind l:shift;ctrl;alt ${LowerRight}
+
+bind m:ctrl;alt;cmd ${FullScreen}
+bind c:ctrl;alt;cmd ${Center}
+
+bind /:ctrl;alt;cmd ${SnapBack}
+
+bind h:ctrl;alt ${PrevMonitor}
+bind l:ctrl;alt ${NextMonitor}
+
+# bind h:ctrl;cmd ${SpacePrev}
+# bind l:ctrl;cmd ${SpaceNext}

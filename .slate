@@ -1,27 +1,31 @@
+# quickly reload slate for new settings
+bind 0:ctrl;alt;cmd relaunch
+
+
+
+### Configs ###
+
 config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
 
-# size up controls that still need to be converted
-#   ctrl;alt;cmd + c -- center (resize to 75% of screen width and height)
-#   ctrl;cmd + (h,l) -- next/prev space
-#   ctrl;alt;cmd + / -- snap back
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread true
 
-# corners
-bind k:shift;ctrl;alt corner top-right resize:screenSizeX/2;screenSizeY/2
-bind l:shift;ctrl;alt corner bottom-right resize:screenSizeX/2;screenSizeY/2
-bind j:shift;ctrl;alt corner bottom-left resize:screenSizeX/2;screenSizeY/2
-bind h:shift;ctrl;alt corner top-left resize:screenSizeX/2;screenSizeY/2
+# do stuff that SizeUp can do
+source sizeup.slate
 
-# up/right/down/left
-bind k:ctrl;alt;cmd  push up bar-resize:screenSizeY/2
-bind l:ctrl;alt;cmd push right bar-resize:screenSizeX/2
-bind j:ctrl;alt;cmd  push down bar-resize:screenSizeY/2
-bind h:ctrl;alt;cmd push left bar-resize:screenSizeX/2
+### Application switching ###
 
-# full screen
-bind m:ctrl;alt;cmd move 0;0 screenSizeX;screenSizeY
+bind w:ctrl;alt hint ASDFGHJKLQWERTYUIOPCVBNMZX
 
-# next/previous display
-bind h:ctrl;alt throw previous
-bind l:ctrl;alt throw next
+bind e:ctrl;alt focus 'Emacs'
+bind f:ctrl;alt focus 'Firefox'
+bind x:ctrl;alt focus 'GitX'
+bind c:ctrl;alt focus 'Google Chrome'
+bind t:ctrl;alt focus 'iTerm'
+bind i:ctrl;alt focus 'iTunes'
+bind p:ctrl;alt focus 'Preview'
+bind s:ctrl;alt focus 'Spotify'
+bind v:ctrl;alt focus 'VirtualBox VM'
