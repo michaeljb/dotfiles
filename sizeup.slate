@@ -8,8 +8,6 @@
 #   option to not resize window on Center
 #   screen edge margins
 #   partition (between window margins) (x and y axis margins)
-#   split screen partition percentages
-#   quarter screen partition percentages
 #   SizeUp's "best effort" behavior
 
 
