@@ -13,6 +13,25 @@
 #   SizeUp's "best effort" behavior
 
 
+# Screen Edge Margins
+alias ScreenEdgeLeft 0
+alias ScreenEdgeRight 0
+alias ScreenEdgeTop 0
+alias ScreenEdgeBottom 0
+
+# Partition (Betwee Window) Margins
+alias PartitionX 0
+alias PartitionY 0
+
+# Split Screen Partitions
+alias SplitX 0.50
+alias SplitY 0.50
+
+# Quarter Screen Partitions
+alias QuarterX 0.50
+alias QuarterY 0.50
+
+
 # settings for Center
 alias centerWidth 0.75
 alias centerHeight 0.75
@@ -22,20 +41,21 @@ alias centerYoffset screenSizeY*(1-${centerHeight})/2
 
 # settings for SnapBack
 config undoMaxStackSize 0
-config undoOps move,push,corner,throw
+config undoOps move,corner,throw
 
 
 # alias definitions to match SizeUp command names
 
-alias Left move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
-alias Right move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
-alias Up push top bar-resize:screenSizeY/2
-alias Down push bottom bar-resize:screenSizeY/2
+alias Left move screenOriginX;screenOriginY screenSizeX*${SplitX};screenSizeY
+alias Right move screenOriginX+screenSizeX*${SplitX};screenOriginY screenSizeX*(1-${SplitX});screenSizeY
+alias Up move screenOriginX;screenOriginY screenSizeX;screenSizeY*(1-${SplitY})
+alias Down move screenOriginX;screenOriginY+screenSizeY*(1-${SplitY}) screenSizeX;screenSizeY*${SplitY}
 
-alias UpperLeft corner top-left resize:screenSizeX/2;screenSizeY/2
-alias UpperRight corner top-right resize:screenSizeX/2;screenSizeY/2
-alias LowerLeft corner bottom-left resize:screenSizeX/2;screenSizeY/2
-alias LowerRight corner bottom-right resize:screenSizeX/2;screenSizeY/2
+
+alias UpperLeft corner top-left resize:screenSizeX*${QuarterX};screenSizeY*(1-${QuarterY})
+alias UpperRight corner top-right resize:screenSizeX*(1-${QuarterX});screenSizeY*(1-${QuarterY})
+alias LowerLeft corner bottom-left resize:screenSizeX*${QuarterX};screenSizeY*${QuarterY}
+alias LowerRight corner bottom-right resize:screenSizeX*(1-${QuarterX});screenSizeY*${QuarterY}
 
 alias FullScreen move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias Center move screenOriginX+${centerXoffset};screenOriginY+${centerYoffset} screenSizeX*${centerWidth};screenSizeY*${centerHeight}
