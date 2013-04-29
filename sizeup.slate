@@ -8,26 +8,41 @@
 #   option to not resize window on Center
 #   SizeUp's "best effort" behavior
 
+### Settings accessed through SizeUp's preferences window
+
 # Screen Edge Margins
 alias ScreenEdgeLeft 0
 alias ScreenEdgeRight 0
-alias ScreenEdgeTop 0
-alias ScreenEdgeBottom 0
-
-alias sizeX (screenSizeX-${ScreenEdgeLeft}-${ScreenEdgeRight})
-alias sizeY (screenSizeY-${ScreenEdgeTop}-${ScreenEdgeBottom})
-
-alias originX screenOriginX+${ScreenEdgeLeft}
-alias originY screenOriginY+${ScreenEdgeTop}
+alias ScreenEdgeUp 0
+alias ScreenEdgeDown 0
 
 # Partition (Between Window) Margins
 alias PartitionX 0
 alias PartitionY 0
 
+# settings for Center with resizing relative to screen size
+alias centerWidth 0.75
+alias centerHeight 0.75
+
 # Split Screen Partitions
 alias SplitX 0.50
 alias SplitY 0.50
 
+# Quarter Screen Partitions
+alias QuarterX 0.50
+alias QuarterY 0.50
+
+
+### Other aliases used here to help translate the user settings to the Slate commands
+
+# aliases for Screen Edge Margins
+alias sizeX (screenSizeX-${ScreenEdgeLeft}-${ScreenEdgeRight})
+alias sizeY (screenSizeY-${ScreenEdgeUp}-${ScreenEdgeDown})
+
+alias originX screenOriginX+${ScreenEdgeLeft}
+alias originY screenOriginY+${ScreenEdgeUp}
+
+# aliases used for Split Screen Partitions
 alias splitLeft (${sizeX}*${SplitX}-(${PartitionX}/2))
 alias splitRight (${sizeX}*(1-${SplitX})-(${PartitionX}/2))
 alias splitUp (${sizeY}*(1-${SplitY})-(${PartitionY}/2))
@@ -36,10 +51,7 @@ alias splitDown (${sizeY}*${SplitY}-(${PartitionY}/2))
 alias rightSplitOrigin ${originX}+${sizeX}*${SplitX}+(${PartitionX}/2)
 alias downSplitOrigin ${originY}+${sizeY}*(1-${SplitY})+(${PartitionY}/2)
 
-# Quarter Screen Partitions
-alias QuarterX 0.50
-alias QuarterY 0.50
-
+# aliases for Quarter Screen Partitions
 alias quarterLeft ${sizeX}*${QuarterX}-(${PartitionX}/2)
 alias quarterRight ${sizeX}*(1-${QuarterX})-(${PartitionX}/2)
 alias quarterUp ${sizeY}*(1-${QuarterY})-(${PartitionY}/2)
@@ -48,10 +60,8 @@ alias quarterDown ${sizeY}*${QuarterY}-(${PartitionY}/2)
 alias quarterRightOrigin ${originX}+${sizeX}*${QuarterX}+(${PartitionX}/2)
 alias quarterDownOrigin ${originY}+${sizeY}*(1-${QuarterY})+(${PartitionY}/2)
 
-# settings for Center with resizing relative to screen size
-alias centerWidth 0.75
-alias centerHeight 0.75
 
+# aliases for Centering, with resizing relative to screen size
 alias centerXoffset ${sizeX}*((1-${centerWidth})/2)
 alias centerYoffset ${sizeY}*((1-${centerHeight})/2)
 
@@ -66,7 +76,7 @@ config undoMaxStackSize 0
 config undoOps move,throw
 
 
-# alias definitions to match SizeUp command names
+### alias definitions to match SizeUp command names
 
 alias Left move ${originX};${originY} ${splitLeft};${sizeY}
 alias Right move ${rightSplitOrigin};${originY} ${splitRight};${sizeY}
@@ -90,7 +100,7 @@ alias NextMonitor throw previous
 # alias SpaceNext
 
 
-# bindings
+### bindings / Shortcuts
 
 bind h:ctrl;alt;cmd ${Left}
 bind l:ctrl;alt;cmd ${Right}
