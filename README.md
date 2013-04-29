@@ -3,6 +3,9 @@ dotfiles
 
 My configurations
 
+.slate
+-------------
+Apart from SizeUp functionality, my .slate just allows fast application switching for my most frequently used apps. I also bound the Slate command `relaunch` to quickly try out new changes.
 
 .sizeup.slate
 -------------
