@@ -10,9 +10,15 @@ Copy the files to your home directory, or create symlinks from your home directo
 --------------------
 The standard git completion script with only one addition; completion only of modified files for  `git checkout -- `. I would like to add similar completion for `git diff`, but since `diff` also accepts a branch as an argument this is more complicated.
 
+### Installation
+Add this line to your .bashrc or .bash_profile:
+`source ~/.git-completion.bash`
+
 .slate
 ------
 Apart from SizeUp functionality, my .slate just allows fast application switching for my most frequently used apps. I also bound the Slate command `relaunch` to quickly try out new changes.
+
+For Slate installation instructions, [click here.](https://github.com/jigish/slate)
 
 .sizeup.slate
 -------------
