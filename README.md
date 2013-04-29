@@ -3,6 +3,9 @@ dotfiles
 
 My configurations
 
+### Installation
+Copy the files to your home directory, or create symlinks from your home directory to these files.
+
 .git-completion.bash
 --------------------
 The standard git completion script with only one addition; completion only of modified files for  `git checkout -- `. I would like to add similar completion for `git diff`, but since `diff` also accepts a branch as an argument this is more complicated.
@@ -40,7 +43,7 @@ SizeUp's partitions let you dictate the size of the "halves" of the screen that 
 SizeUp has a separate setting for the Quarter Scren Partitions, allowing your "halves" and "quarters" behave differently. The setting still works the same way, and is handled in .sizeup.slate with the aliases **Quarter[X/Y]**.
 
 ### Installation
-If these are your only Slate configurations (they shouldn't be; Slate can a lot of cool things), put this file in your home directory as ".slate". Otherwise, put it in your home directory as ".sizeup.slate" and add this line to your .slate (and be sure you don't have conflicting alias definitions anywhere):
+Make sure your .slate has this line:
 
 `source .sizeup.slate`
 
