@@ -94,7 +94,7 @@ alias Center move ${centerOriginX};${centerOriginY} ${centerSizeX};${centerSizeY
 alias SnapBack undo
 
 alias PrevMonitor throw previous
-alias NextMonitor throw previous
+alias NextMonitor throw next
 
 # alias SpacePrev
 # alias SpaceNext
