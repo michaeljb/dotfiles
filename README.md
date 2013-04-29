@@ -3,8 +3,12 @@ dotfiles
 
 My configurations
 
+.git-completion.bash
+--------------------
+The standard git completion script with only one addition; completion only of modified files for  `git checkout -- `. I would like to add similar completion for `git diff`, but since `diff` also accepts a branch as an argument this is more complicated.
+
 .slate
--------------
+------
 Apart from SizeUp functionality, my .slate just allows fast application switching for my most frequently used apps. I also bound the Slate command `relaunch` to quickly try out new changes.
 
 .sizeup.slate
