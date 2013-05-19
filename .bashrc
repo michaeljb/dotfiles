@@ -23,3 +23,6 @@ export PATH=$PATH:/usr/local/share/npm/bin/
 export PATH="~/local/git:$PATH"
 
 source ~/.git-completion.bash
+
+source ~/.git-prompt.sh
+export PS1="\u:\W \$(__git_ps1)$ "
