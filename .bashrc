@@ -1,5 +1,5 @@
-alias l='ls -GAl $@'
-alias ll='ls -Gl $@'
+alias l='ls -FlAG $@'
+alias ll='ls -FlG $@'
 
 alias emacs='open -a /Applications/Emacs.app'
 export VISUAL=/Applications/Emacs.app/Contents/MacOS/Emacs;
@@ -31,7 +31,6 @@ GIT_BRANCH="\$(__git_ps1)"
 RED="\e[0;31m"
 GREEN="\e[0;32m"
 YELLOW="\e[1;33m"
-CLR_BEGIN="\e["
 CLR_END="\e[m"
 
 MAIN_CLR="${YELLOW}"
