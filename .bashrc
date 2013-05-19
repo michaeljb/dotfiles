@@ -24,5 +24,17 @@ export PATH="~/local/git:$PATH"
 
 source ~/.git-completion.bash
 
+
 source ~/.git-prompt.sh
-export PS1="\u:\W \$(__git_ps1)$ "
+GIT_BRANCH="\$(__git_ps1)"
+
+RED="\e[0;31m"
+GREEN="\e[0;32m"
+YELLOW="\e[1;33m"
+CLR_BEGIN="\e["
+CLR_END="\e[m"
+
+MAIN_CLR="${YELLOW}"
+BRANCH_CLR="${GREEN}"
+
+export PS1="${MAIN_CLR}\u:\W${CLR_END}${BRANCH_CLR}${GIT_BRANCH}${CLR_END} ${MAIN_CLR}\$${CLR_END} "
