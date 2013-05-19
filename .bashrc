@@ -1,4 +1,4 @@
-alias l='ls -Gal $@'
+alias l='ls -GAl $@'
 alias ll='ls -Gl $@'
 
 alias emacs='open -a /Applications/Emacs.app'
