@@ -28,10 +28,10 @@ source ~/.git-completion.bash
 source ~/.git-prompt.sh
 GIT_BRANCH="\$(__git_ps1)"
 
-RED="\e[0;31m"
-GREEN="\e[0;32m"
-YELLOW="\e[1;33m"
-CLR_END="\e[m"
+RED="\[\e[0;31m\]"
+GREEN="\[\e[0;32m\]"
+YELLOW="\[\e[1;33m\]"
+CLR_END="\[\e[m\]"
 
 MAIN_CLR="${YELLOW}"
 BRANCH_CLR="${GREEN}"
