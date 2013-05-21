@@ -22,9 +22,6 @@ export PATH=$PATH:/usr/local/share/npm/bin/
 
 export PATH="~/local/git:$PATH"
 
-source ~/.git-completion.bash
-
-
 source ~/.git-prompt.sh
 GIT_BRANCH="\$(__git_ps1)"
 
@@ -37,3 +34,5 @@ MAIN_CLR="${YELLOW}"
 BRANCH_CLR="${GREEN}"
 
 export PS1="${MAIN_CLR}\u:\W${CLR_END}${BRANCH_CLR}${GIT_BRANCH}${CLR_END} ${MAIN_CLR}\$${CLR_END} "
+
+for f in completion/*; do source $f; done
