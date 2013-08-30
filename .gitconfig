@@ -5,6 +5,10 @@
 [color]
 	ui = true
 [core]
-	editor = /Applications/Emacs.app/Contents/MacOS/Emacs
+	editor = emacs
 [push]
 	default = simple
+[merge]
+        tool = ediff
+[mergetool "ediff"]
+        cmd = emacs --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
