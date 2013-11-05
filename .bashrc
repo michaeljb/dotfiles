@@ -18,17 +18,21 @@ alias emacsclient=ec
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.2/libexec
-export GRAILS_HOME=~/local/grails-2.1.3
+export GRAILS_HOME=`echo ~`/local/grails-2.1.3
 
-export PATH="~/bin:/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:/Users/michael/local:$PATH"
+export PATH="`echo ~`/bin:/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:`echo ~`/local:$PATH"
+
+export PATH="`echo ~`/local/git-hooks:$PATH"
 
 export PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
 
 export PATH=$PATH:/usr/local/share/npm/bin/
-export PATH=$PATH:~/.npm/
+export PATH=$PATH:`echo ~`/.npm/
 
-export PATH="~/local/git:$PATH"
+export PATH="`echo ~`/local/git:$PATH"
+
+export PATH="`echo ~`/projects/git-hooks:$PATH"
 
 source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true # unstaged (*) and staged (+)
@@ -60,3 +64,7 @@ CLR_END="\[\e[m\]"
 export PS1="${CYAN}\u@\h${CLR_END} ${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${PURPLE}\$${CLR_END} "
 
 for f in completion/*; do source $f; done
+
+export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
+
+export NODE_PATH=~/.npm
