@@ -3,22 +3,15 @@ alias ll='ls -FlG $@'
 
 alias gst='git status'
 alias gd='git diff'
-alias gc='git commit'
-alias gcm='git commit -m'
 alias gco='git checkout'
 alias gpr='git pull --rebase'
 alias gx='gitx'
 alias gb='git branch'
 alias gr='git rebase'
 alias gri='git rebase -i'
-alias ga='git add'
-
-alias emacsclient=ec
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-export GROOVY_HOME=/usr/local/Cellar/groovy/1.8.2/libexec
-export GRAILS_HOME=`echo ~`/local/grails-2.1.3
 
 export PATH="`echo ~`/bin:/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:`echo ~`/local:$PATH"
