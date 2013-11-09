@@ -13,19 +13,17 @@ alias gri='git rebase -i'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 
-export PATH="`echo ~`/bin:/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:`echo ~`/local:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$HOME/local:$PATH"
 
-export PATH="`echo ~`/local/git-hooks:$PATH"
+export PATH="$PATH:$HOME/local/git-hooks"
 
 export PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
 
-export PATH=$PATH:/usr/local/share/npm/bin/
-export PATH=$PATH:`echo ~`/.npm/
+export PATH=$PATH:/usr/local/share/npm/bin
+export PATH=$PATH:$HOME/.npm
 
-export PATH="`echo ~`/local/git:$PATH"
-
-export PATH="`echo ~`/projects/git-hooks:$PATH"
+export PATH="$HOME/projects/git-hooks:$PATH"
 
 source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true # unstaged (*) and staged (+)
