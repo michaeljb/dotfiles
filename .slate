@@ -18,10 +18,10 @@ source .sizeup.slate
 
 ### Application switching ###
 
-bind w:ctrl;alt hint ASDFGHJKLQWERTYUIOPCVBNMZX
+bind w:ctrl;alt hint ASDFGQWERTZXCVBHJKLYUIOPNM
 
 bind e:ctrl;alt focus 'Emacs'
-bind f:ctrl;alt focus 'Firefox'
+bind f:ctrl;alt focus 'Finder'
 bind x:ctrl;alt focus 'GitX'
 bind c:ctrl;alt focus 'Google Chrome'
 bind t:ctrl;alt focus 'iTerm'
@@ -29,4 +29,3 @@ bind i:ctrl;alt focus 'iTunes'
 bind o:ctrl;alt focus 'OpenOffice.org'
 bind p:ctrl;alt focus 'Preview'
 bind s:ctrl;alt focus 'Spotify'
-bind v:ctrl;alt focus 'VirtualBox VM'
