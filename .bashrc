@@ -54,8 +54,11 @@ CLR_END="\[\e[m\]"
 
 export PS1="${CYAN}\u@\h${CLR_END} ${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${PURPLE}\$${CLR_END} "
 
-for f in completion/*; do source $f; done
+# bash completion installed by homebrew
+source /usr/local/etc/bash_completion.d
 
 export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
 
 export NODE_PATH=~/.npm
+
+export EDITOR="emacsclient -nw"
