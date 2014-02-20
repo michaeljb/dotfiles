@@ -25,7 +25,7 @@ export PATH=$PATH:$HOME/.npm
 
 export PATH="$HOME/projects/git-hooks:$PATH"
 
-source ~/.git-prompt.sh
+source /usr/local/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true # unstaged (*) and staged (+)
 GIT_PS1_SHOWUNTRACKEDFILES=true # untracked files (%)
 GIT_PS1_SHOWUPSTREAM="auto" # (<) behind, (>) ahead, (<>) diverged, (=) no difference
@@ -55,7 +55,8 @@ CLR_END="\[\e[m\]"
 export PS1="${CYAN}\u@\h${CLR_END} ${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${PURPLE}\$${CLR_END} "
 
 # bash completion installed by homebrew
-source /usr/local/etc/bash_completion.d
+source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/hub.bash_completion.sh
 
 export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
 
