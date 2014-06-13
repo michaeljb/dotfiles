@@ -1,14 +1,14 @@
-alias l='ls -FlAG $@'
-alias ll='ls -FlG $@'
+alias l='ls -hlFAG'
+alias ll='ls -hlFG'
+
+alias git=hub
 
 alias gst='git status'
-alias gd='git diff'
+alias gd='git diff --ignore-space-change'
 alias gco='git checkout'
-alias gpr='git pull --rebase'
-alias gx='gitx'
 alias gb='git branch'
-alias gr='git rebase'
-alias gri='git rebase -i'
+
+alias gx='gitx'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

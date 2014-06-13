@@ -1,3 +1,8 @@
+.rake_t_cache
+.sass-cache/
+
+\#*.*\#
+
 ## github's Emacs.gitignore
 *~
 \#*\#
@@ -17,7 +22,6 @@ tramp
 .AppleDouble
 .LSOverride
 Icon
-
 
 # Thumbnails
 ._*

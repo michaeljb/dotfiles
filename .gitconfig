@@ -2,19 +2,20 @@
 	name = Michael Brandt
 	email = michaelbrandt5@gmail.com
 	email = michael.j.brandt@colorado.edu
+	email = mbrandt@colorado.edu
 [color]
 	ui = true
 [core]
 	pager = less --tabs=2
-	excludesfile = /Users/michael/.gitignore_global
+	excludesfile = ~/.gitignore
 	editor = emacsclient -nw
 [push]
 	default = simple
-[merge]
-	tool = ediff
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[help]
+	autocorrect = 1
