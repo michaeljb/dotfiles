@@ -1,3 +1,5 @@
+.fuse_hidden*
+
 .rake_t_cache
 .sass-cache/
 
