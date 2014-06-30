@@ -14,7 +14,7 @@ config windowHintsIgnoreHiddenWindows false
 config windowHintsSpread true
 
 # do stuff that SizeUp can do
-source .sizeup.slate
+# source .sizeup.slate
 
 ### Application switching ###
 
