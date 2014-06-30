@@ -1,4 +1,4 @@
-alias l='ls -hlFAG'
+alias l='ls -hlAFG'
 alias ll='ls -hlFG'
 
 alias git=hub
@@ -9,6 +9,11 @@ alias gco='git checkout'
 alias gb='git branch'
 
 alias gx='gitx'
+
+alias gi='git'
+alias gitp='git'
+alias gitc='git'
+alias gitr='git'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
