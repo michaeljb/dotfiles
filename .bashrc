@@ -10,10 +10,14 @@ alias gb='git branch'
 
 alias gx='gitx'
 
+# aliases for typos with git commands
 alias gi='git'
-alias gitp='git'
-alias gitc='git'
-alias gitr='git'
+alias gti='git'
+
+alias gita='git' # add
+alias gitc='git' # commit
+alias gitp='git' # push, pull
+alias gitr='git' # rebase
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
