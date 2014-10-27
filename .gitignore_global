@@ -4,6 +4,7 @@
 .sass-cache/
 
 \#*.*\#
+.\#*.*\#
 
 ## github's Emacs.gitignore
 *~
