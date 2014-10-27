@@ -19,7 +19,16 @@ alias gitc='git' # commit
 alias gitp='git' # push, pull
 alias gitr='git' # rebase
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+alias be='bundle exec'
+alias ber='bundle exec rake'
+
+# vagrant development
+alias v='bundle exec vagrant'
+alias vn='bundle exec vagrant nsidc'
+
+# vagrant ssh, with x-window forwarding
+alias vssh='ssh -X vagrant@127.0.0.1 -p 2222'
+
 
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
@@ -27,12 +36,10 @@ export PATH="/usr/local/sbin:$HOME/local:$PATH"
 
 export PATH="$PATH:$HOME/local/git-hooks"
 
-export PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
-
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:$HOME/.npm
 
-export PATH="$HOME/projects/git-hooks:$PATH"
+export PATH="$PATH:$HOME/projects/git-hooks"
 
 COMPLETION=/usr/local/etc/bash_completion.d/
 for i in `ls $COMPLETION`; do
@@ -72,3 +79,19 @@ export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
 export NODE_PATH=~/.npm
 
 export EDITOR="emacsclient -nw"
+
+
+function vmssh() {
+    APP="$1"
+
+    if [ -z "$2" ]; then
+        ENVIRONMENT="integration"
+    else
+        ENVIRONMENT="$2"
+    fi
+
+    ssh -X vagrant@$ENVIRONMENT.$APP.apps.int.nsidc.org
+}
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#export PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
