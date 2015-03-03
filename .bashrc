@@ -83,7 +83,7 @@ RED="\[\e[0;31m\]"
 YELLOW="\[\e[0;33m\]"
 CLR_END="\[\e[m\]"
 
-export PS1="${CYAN}\u@\h${CLR_END} ${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${RED}\$${CLR_END} "
+export PS1="\n${CYAN}\u@\h${CLR_END} ${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${RED}\$${CLR_END} "
 
 export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
 
