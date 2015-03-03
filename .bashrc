@@ -19,17 +19,28 @@ alias gitc='git' # commit
 alias gitp='git' # push, pull
 alias gitr='git' # rebase
 
+# useful for updating after an accepted pull request; updates local master
+# branch and removes local branches whose remotes have been merged into master
+alias gitprune='git stash && git checkout master && git fetch --prune --tags && git rebase origin/master && git branch -d $(git branch --merged | grep -v master)'
+
+function fixup() {
+    git commit -m "fixup! $1"
+}
+
 alias be='bundle exec'
 alias ber='bundle exec rake'
 
 # vagrant development
-alias v='bundle exec vagrant'
 alias vn='bundle exec vagrant nsidc'
 
-# vagrant ssh, with x-window forwarding
-alias vssh='ssh -X vagrant@127.0.0.1 -p 2222'
+# # vagrant ssh, with x-window forwarding
+# alias vssh='ssh -X vagrant@127.0.0.1 -p 2222'
 
+function vssh() {
+    ssh vagrant@$1 -i ~/.ssh/id_rsa_vagrant_vsphere
+}
 
+export TERM=xterm-256color
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$HOME/local:$PATH"
@@ -72,7 +83,7 @@ RED="\[\e[0;31m\]"
 YELLOW="\[\e[0;33m\]"
 CLR_END="\[\e[m\]"
 
-export PS1="${CYAN}\u@\h${CLR_END} ${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${PURPLE}\$${CLR_END} "
+export PS1="${CYAN}\u@\h${CLR_END} ${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${RED}\$${CLR_END} "
 
 export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
 
@@ -93,5 +104,7 @@ function vmssh() {
     ssh -X vagrant@$ENVIRONMENT.$APP.apps.int.nsidc.org
 }
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-#export PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+# debugging for vagrant-nsidc
+export NSIDC_PLUGIN_LOG=debug
+
+alias t='tree -a'
