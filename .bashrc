@@ -37,7 +37,21 @@ alias vn='bundle exec vagrant nsidc'
 # alias vssh='ssh -X vagrant@127.0.0.1 -p 2222'
 
 function vssh() {
-    ssh vagrant@$1 -i ~/.ssh/id_rsa_vagrant_vsphere
+    host=$1
+
+    # remove protocol
+    host=$(echo $host | sed -e 's/^.*:\/\///')
+
+    # remove path to file
+    host=$(echo $host | sed -e 's/[^/]\/.*$//g')
+
+    # remove port
+    host=$(echo $host | sed -e 's/:[0-9]*$//g')
+
+    cmd="ssh vagrant@$host -i ~/.ssh/id_rsa_vagrant_vsphere"
+
+    echo -e "$cmd\n"
+    $cmd
 }
 
 export TERM=xterm-256color
@@ -83,7 +97,7 @@ RED="\[\e[0;31m\]"
 YELLOW="\[\e[0;33m\]"
 CLR_END="\[\e[m\]"
 
-export PS1="\n${CYAN}\u@\h${CLR_END} ${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${RED}\$${CLR_END} "
+export PS1="\n${CYAN}\u@\h ${CLR_END}${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${RED}\$${CLR_END} "
 
 export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
 
