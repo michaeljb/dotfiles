@@ -1,6 +1,8 @@
 alias l='ls -hlAFG'
 alias ll='ls -hlFG'
 
+alias hex='open -a "/Applications/Hex Fiend.app"'
+
 alias git=hub
 
 alias gst='git status'
