@@ -45,12 +45,12 @@ function vssh() {
     host=$(echo $host | sed -e 's/^.*:\/\///')
 
     # remove path to file
-    host=$(echo $host | sed -e 's/[^/]\/.*$//g')
+    host=$(echo $host | sed -e 's/\/.*$//g')
 
     # remove port
     host=$(echo $host | sed -e 's/:[0-9]*$//g')
 
-    cmd="ssh vagrant@$host -i ~/.ssh/id_rsa_vagrant_vsphere"
+    cmd="ssh -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host"
 
     echo -e "$cmd\n"
     $cmd
