@@ -50,10 +50,17 @@ function vssh() {
     # remove port
     host=$(echo $host | sed -e 's/:[0-9]*$//g')
 
-    cmd="ssh -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host"
+    cmd="ssh -A -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host"
 
-    echo -e "$cmd\n"
-    $cmd
+    shift
+
+    echo -e $cmd "$@"
+    $cmd "$@"
+}
+
+# quickly get the password for vcenter onto the clipboard
+function vcenter() {
+    cat ~/.vagrant.d/vagrant-nsidc.yaml | grep password: | head -n 1 | awk '{print $2}' | pbcopy
 }
 
 export TERM=xterm-256color
@@ -99,7 +106,7 @@ RED="\[\e[0;31m\]"
 YELLOW="\[\e[0;33m\]"
 CLR_END="\[\e[m\]"
 
-export PS1="\n${CYAN}\u@\h ${CLR_END}${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END} ${RED}\$${CLR_END} "
+export PS1="\n${CYAN}\u@\h ${CLR_END}${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END}\n  ${RED}>${CLR_END} "
 
 export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
 
@@ -117,7 +124,7 @@ function vmssh() {
         ENVIRONMENT="$2"
     fi
 
-    ssh -X vagrant@$ENVIRONMENT.$APP.apps.int.nsidc.org
+    ssh -X vagrant@$ENVIRONMENT.$APP.apps.int.nsidc.org "$@"
 }
 
 # debugging for vagrant-nsidc
