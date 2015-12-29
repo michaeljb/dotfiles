@@ -80,6 +80,11 @@ for i in `ls $COMPLETION`; do
   source $COMPLETION/$i
 done
 
+if [ ! -e "~/.git-prompt.sh"]; then
+    curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+fi
+source ~/.git-prompt.sh
+
 GIT_PS1_SHOWDIRTYSTATE=true # unstaged (*) and staged (+)
 GIT_PS1_SHOWUNTRACKEDFILES=true # untracked files (%)
 GIT_PS1_SHOWUPSTREAM="auto" # (<) behind, (>) ahead, (<>) diverged, (=) no difference
