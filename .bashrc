@@ -1,5 +1,18 @@
-alias l='ls -hlAFG'
-alias ll='ls -hlFG'
+system=$(uname -a | awk '{print $1}')
+
+case "$system" in
+    Darwin)
+	color_flag="-G"
+	;;
+    Linux)
+	color_flag="--color"
+	;;
+    *)
+	color_flag=""
+esac
+
+alias ll="ls -hlF $color_flag"
+alias l="ll -A"
 
 alias hex='open -a "/Applications/Hex Fiend.app"'
 
@@ -50,7 +63,7 @@ function vssh() {
     # remove port
     host=$(echo $host | sed -e 's/:[0-9]*$//g')
 
-    cmd="ssh -A -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host"
+    cmd="ssh -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host -A"
 
     shift
 
