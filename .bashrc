@@ -14,16 +14,22 @@ esac
 alias ll="ls -hlF $color_flag"
 alias l="ll -A"
 
-alias hex='open -a "/Applications/Hex Fiend.app"'
+if [ -e "/Applications/Hex Fiend.app" ]; then
+    alias hex='open -a "/Applications/Hex Fiend.app"'
+fi
 
-alias git=hub
+if [ $(which hub) ]; then
+    alias git=hub
+fi
 
 alias gst='git status'
 alias gd='git diff --ignore-space-change'
 alias gco='git checkout'
 alias gb='git branch'
 
-alias gx='gitx'
+if [ $(which gitx) ]; then
+    alias gx=gitx
+fi
 
 # aliases for typos with git commands
 alias gi='git'
@@ -42,11 +48,14 @@ function fixup() {
     git commit -m "fixup! $1"
 }
 
-alias be='bundle exec'
-alias ber='bundle exec rake'
+if [ $(which bundle) ]; then
+    alias be='bundle exec'
+    alias ber='bundle exec rake'
 
-# vagrant development
-alias vn='bundle exec vagrant nsidc'
+    # vagrant development
+    alias vn='bundle exec vagrant nsidc'
+fi
+
 
 # # vagrant ssh, with x-window forwarding
 # alias vssh='ssh -X vagrant@127.0.0.1 -p 2222'
@@ -128,12 +137,9 @@ CLR_END="\[\e[m\]"
 
 export PS1="\n${CYAN}\u@\h ${CLR_END}${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END}\n  ${RED}>${CLR_END} "
 
-export CXXTEST="$HOME/local/cxxtest-4.3/cxxtest"
-
 export NODE_PATH=~/.npm
 
 export EDITOR="emacsclient -nw"
-
 
 function vmssh() {
     APP="$1"
@@ -150,4 +156,6 @@ function vmssh() {
 # debugging for vagrant-nsidc
 export NSIDC_PLUGIN_LOG=debug
 
-alias t='tree -a'
+if [ $(which tree) ]; then
+    alias t='tree -a'
+fi
