@@ -140,16 +140,24 @@ case "$(whoami)" in
 	user_host_color="${YELLOW}"
 	cwd_color="${RED}"
 	prompt_color="${CYAN}"
+	git_color="${GREEN}"
+	;;
+    root)
+	user_host_color="${RED}"
+	cwd_color="${RED}"
+	prompt_color="${RED}"
+	git_color="${RED}"
 	;;
     *)
 	user_host_color="${CYAN}"
 	cwd_color="${YELLOW}"
 	prompt_color="${RED}"
+	git_color="${GREEN}"
 esac
 user_host="${user_host_color}\u@\h ${CLR_END}"
 cwd="${cwd_color}\w${CLR_END}"
 prompt="\n  ${prompt_color}>${CLR_END} "
-git_prompt="${GREEN}${GIT_BRANCH}${CLR_END}"
+git_prompt="${git_color}${GIT_BRANCH}${CLR_END}"
 
 export PS1="\n${user_host}${cwd}${git_prompt}${prompt}"
 
