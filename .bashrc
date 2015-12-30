@@ -135,7 +135,23 @@ RED="\[\e[0;31m\]"
 YELLOW="\[\e[0;33m\]"
 CLR_END="\[\e[m\]"
 
-export PS1="\n${CYAN}\u@\h ${CLR_END}${YELLOW}\w${CLR_END}${GREEN}${GIT_BRANCH}${CLR_END}\n  ${RED}>${CLR_END} "
+case "$(whoami)" in
+    vagrant)
+	user_host_color="${YELLOW}"
+	cwd_color="${RED}"
+	prompt_color="${CYAN}"
+	;;
+    *)
+	user_host_color="${CYAN}"
+	cwd_color="${YELLOW}"
+	prompt_color="${RED}"
+esac
+user_host="${user_host_color}\u@\h ${CLR_END}"
+cwd="${cwd_color}\w${CLR_END}"
+prompt="\n  ${prompt_color}>${CLR_END} "
+git_prompt="${GREEN}${GIT_BRANCH}${CLR_END}"
+
+export PS1="\n${user_host}${cwd}${git_prompt}${prompt}"
 
 export NODE_PATH=~/.npm
 
