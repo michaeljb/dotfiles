@@ -76,9 +76,11 @@ export PATH=$PATH:$HOME/.npm
 export PATH="$PATH:$HOME/projects/git-hooks"
 
 COMPLETION=/usr/local/etc/bash_completion.d/
-for i in `ls $COMPLETION`; do
-  source $COMPLETION/$i
-done
+if [ -d "$COMPLETION" ]; then
+    for i in `ls $COMPLETION`; do
+	source $COMPLETION/$i
+    done
+fi
 
 if [ ! -e "$HOME/.git-prompt.sh" ]; then
     curl -o $HOME/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
