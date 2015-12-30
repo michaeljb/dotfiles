@@ -80,8 +80,8 @@ for i in `ls $COMPLETION`; do
   source $COMPLETION/$i
 done
 
-if [ ! -e "~/.git-prompt.sh" ]; then
-    curl -o ~/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+if [ ! -e "$HOME/.git-prompt.sh" ]; then
+    curl -o $HOME/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
 fi
 source ~/.git-prompt.sh
 
