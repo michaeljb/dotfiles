@@ -2,7 +2,7 @@
 
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-for fn in .bashrc .bash_profile .slate .slate.js .gitconfig .tmux.conf; do
+for fn in .bashrc .bash_profile .slate .slate.js .gitconfig .tmux.conf .git-prompt.sh; do
     echo "linking $fn in $HOME"
     rm -f $HOME/$fn
     ln -sf $THIS_DIR/$fn $HOME/$fn

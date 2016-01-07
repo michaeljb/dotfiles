@@ -104,9 +104,6 @@ if [ -d "$COMPLETION" ]; then
     done
 fi
 
-if [ ! -e "$HOME/.git-prompt.sh" ]; then
-    curl -o $HOME/.git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-fi
 source ~/.git-prompt.sh
 
 GIT_PS1_SHOWDIRTYSTATE=true # unstaged (*) and staged (+)
