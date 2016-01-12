@@ -10,7 +10,7 @@ done
 
 echo "linking flake8 in $HOME/.config/flake8"
 rm -f $HOME/.config/flake8
-mkdir $HOME/.config
+mkdir -p $HOME/.config
 ln -sf $THIS_DIR/flake8 $HOME/.config/flake8
 
 echo "linking .gitignore_global in $HOME/.gitignore"
