@@ -4,4 +4,4 @@
 ./bootstrap_emacs.sh
 ./setup_vagrant_synced_folder.sh
 
-. ~/.bashrc
+echo -e "RUN THIS:\ncd && source ~/.bashrc"
