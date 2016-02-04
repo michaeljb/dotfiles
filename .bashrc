@@ -180,3 +180,6 @@ export NSIDC_PLUGIN_LOG=debug
 if [ $(which tree) ]; then
     alias t='tree -a'
 fi
+
+# conda for python packaging/env
+export PATH="$PATH:$HOME/anaconda3/bin"
