@@ -72,7 +72,7 @@ function vssh() {
     # remove port
     host=$(echo $host | sed -e 's/:[0-9]*$//g')
 
-    cmd="ssh -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host -A"
+    cmd="ssh -A -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host"
 
     shift
 
