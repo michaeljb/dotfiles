@@ -17,6 +17,10 @@ echo "linking .gitignore_global in $HOME/.gitignore"
 rm -f $HOME/.gitignore
 ln -sf $THIS_DIR/.gitignore_global $HOME/.gitignore
 
+echo "linking ssh config"
+rm -f $HOME/.ssh/rc
+ln -sf $THIS_DIR/.ssh-rc $HOME/.ssh/rc
+
 if [ "$(whoami)" = "vagrant" ]; then
     sudo ln -sf $THIS_DIR/.bashrc /root/.bash_aliases
 fi
