@@ -48,12 +48,14 @@ function fixup() {
     git commit -m "fixup! $1"
 }
 
+alias vn='vagrant nsidc'
+
 if [ $(which bundle) ]; then
     alias be='bundle exec'
     alias ber='bundle exec rake'
 
     # vagrant development
-    alias vn='bundle exec vagrant nsidc'
+    alias bvn='bundle _1.6.9_ exec vagrant nsidc'
 fi
 
 
@@ -183,3 +185,10 @@ fi
 
 # conda for python packaging/env
 export PATH="$PATH:$HOME/anaconda3/bin"
+
+eval "$(thefuck --alias)"
+
+export NVM_DIR="/Users/mbrandt/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export JSBIN_CONFIG=~/.jsbin/config.local.json

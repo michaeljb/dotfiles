@@ -23,6 +23,7 @@ bind w:ctrl;alt hint ASDFGQWERTZXCVBHJKLYUIOPNM
 bind e:ctrl;alt focus 'Emacs'
 bind x:ctrl;alt focus 'GitX'
 bind c:ctrl;alt focus 'Google Chrome'
-bind t:ctrl;alt focus 'iTerm'
+bind f:ctrl;alt focus 'Firefox'
+bind t:ctrl;alt focus 'iTerm2'
 bind o:ctrl;alt focus 'OpenOffice.org'
 bind p:ctrl;alt focus 'Preview'
