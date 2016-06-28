@@ -186,7 +186,7 @@ fi
 # conda for python packaging/env
 export PATH="$PATH:$HOME/anaconda3/bin"
 
-which thefuck && eval "$(thefuck --alias)"
+(which thefuck > /dev/null) && eval "$(thefuck --alias)"
 
 export NVM_DIR="/Users/mbrandt/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
