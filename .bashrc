@@ -162,6 +162,8 @@ export PS1="\n${user_host}${cwd}${git_prompt}${prompt}"
 
 export NODE_PATH=~/.npm
 
+alias run='npm run --silent'
+
 export EDITOR="emacsclient -nw"
 
 function vmssh() {
@@ -188,7 +190,8 @@ export PATH="$PATH:$HOME/anaconda3/bin"
 
 (which thefuck > /dev/null) && eval "$(thefuck --alias)"
 
-export NVM_DIR="/Users/mbrandt/.nvm"
+export NVM_DIR=/Users/$(whoami)/.nvm
+
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export JSBIN_CONFIG=~/.jsbin/config.local.json
