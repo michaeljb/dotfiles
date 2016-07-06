@@ -82,6 +82,16 @@ function vssh() {
     $cmd "$@"
 }
 
+# get vm hostnames
+function gethostname() {
+    env=$1
+
+    hostname=$(cat .vagrant-$env/machines/default/vsphere-nsidc/nsidc-machine.yaml | grep hostname | awk '{print $2}')
+
+    echo $hostname | pbcopy
+    echo $hostname
+}
+
 # quickly get the password for vcenter onto the clipboard
 function vcenter() {
     cat ~/.vagrant.d/vagrant-nsidc.yaml | grep password: | head -n 1 | awk '{print $2}' | pbcopy
