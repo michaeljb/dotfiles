@@ -42,7 +42,7 @@ alias gitr='git' # rebase
 
 # useful for updating after an accepted pull request; updates local master
 # branch and removes local branches whose remotes have been merged into master
-alias gitprune='git stash && git checkout master && git fetch --prune --tags && git rebase origin/master && git branch -d $(git branch --merged | grep -v master)'
+alias gitprune="git stash && git checkout master && git fetch --prune --tags && git rebase origin/master && git branch -d $(git branch --merged | grep -v master)| awk '{print $1}'"
 
 function fixup() {
     git commit -m "fixup! $1"
