@@ -179,7 +179,7 @@ cwd="${cwd_color}\w${CLR_END}"
 prompt="\n  ${prompt_color}>${CLR_END} "
 git_prompt="${git_color}${GIT_BRANCH}${CLR_END}"
 
-export PS1="\n${user_host}${cwd}${git_prompt}${prompt}"
+export PS1="\n[\$?] ${user_host}${cwd}${git_prompt}${prompt}"
 
 export NODE_PATH=~/.npm
 
