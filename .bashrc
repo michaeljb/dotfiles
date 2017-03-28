@@ -55,13 +55,11 @@ function fixup() {
 }
 
 alias vn='vagrant nsidc'
+alias bvn='bundle exec vagrant nsidc'
 
 if [ $(which bundle) ]; then
     alias be='bundle exec'
     alias ber='bundle exec rake'
-
-    # vagrant development
-    alias bvn='bundle _1.6.9_ exec vagrant nsidc'
 fi
 
 
@@ -80,7 +78,7 @@ function vssh() {
     # remove port
     host=$(echo $host | sed -e 's/:[0-9]*$//g')
 
-    cmd="ssh -A -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host"
+    cmd="ssh -Y -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host"
 
     shift
 
@@ -100,7 +98,9 @@ function gethostname() {
 # vssh to vm based on environment
 function vsshe() {
     env=$1
-    vssh $(gethostname $env)
+    shift
+    hostname=$(gethostname $env)
+    vssh "${hostname} ${@}"
 }
 
 # quickly get the password for vcenter onto the clipboard
