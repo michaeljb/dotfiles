@@ -179,7 +179,24 @@ cwd="${cwd_color}\w${CLR_END}"
 prompt="\n  ${prompt_color}>${CLR_END} "
 git_prompt="${git_color}${GIT_BRANCH}${CLR_END}"
 
-export PS1="\n[\$?] \t ${user_host}${cwd}${git_prompt}${prompt}"
+function timer_start {
+  timer=${timer:-$SECONDS}
+}
+
+function timer_stop {
+  timer_show=$(($SECONDS - $timer))
+  unset timer
+}
+
+trap 'timer_start' DEBUG
+
+if [ "$PROMPT_COMMAND" == "" ]; then
+  PROMPT_COMMAND="timer_stop"
+else
+  PROMPT_COMMAND="$PROMPT_COMMAND; timer_stop"
+fi
+
+export PS1="\n[\$?] \${timer_show}s \t ${user_host}${cwd}${git_prompt}${prompt}"
 
 export NODE_PATH=~/.npm
 
