@@ -36,11 +36,6 @@ fi
 alias gi='git'
 alias gti='git'
 
-alias gita='git' # add
-alias gitc='git' # commit
-alias gitp='git' # push, pull
-alias gitr='git' # rebase
-
 # useful for updating after an accepted pull request; updates local master
 # branch and removes local branches whose remotes have been merged into master
 function gitprune() {
