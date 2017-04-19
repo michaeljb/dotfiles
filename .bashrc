@@ -46,10 +46,6 @@ function gitprune() {
     git branch -d $(git branch --merged | grep -v master | awk '{print $1}')
 }
 
-function fixup() {
-    git commit -m "fixup! $1"
-}
-
 alias vn='vagrant nsidc'
 alias bvn='bundle exec vagrant nsidc'
 
