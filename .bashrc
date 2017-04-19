@@ -29,6 +29,7 @@ alias gb='git branch'
 
 if [ $(which gitx) ]; then
     alias gx=gitx
+    alias gtix=gitx
 fi
 
 # aliases for typos with git commands
