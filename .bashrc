@@ -1,3 +1,5 @@
+source ~/.ps1
+
 system=$(uname -a | awk '{print $1}')
 
 case "$system" in
@@ -119,77 +121,6 @@ if [ -d "$COMPLETION" ]; then
     done
 fi
 
-source ~/.git-prompt.sh
-
-GIT_PS1_SHOWDIRTYSTATE=true # unstaged (*) and staged (+)
-GIT_PS1_SHOWUNTRACKEDFILES=true # untracked files (%)
-GIT_PS1_SHOWUPSTREAM="auto" # (<) behind, (>) ahead, (<>) diverged, (=) no difference
-
-GIT_BRANCH="\$(__git_ps1)"
-
-#Prompt and prompt colors
-# 30m - Black
-# 31m - Red
-# 32m - Green
-# 33m - Yellow
-# 34m - Blue
-# 35m - Purple
-# 36m - Cyan
-# 37m - White
-# 0 - Normal
-# 1 - Bold
-
-BLUE="\[\e[0;34m\]"
-CYAN="\[\e[0;36m\]"
-GREEN="\[\e[0;32m\]"
-PURPLE="\[\e[0;35m\]"
-RED="\[\e[0;31m\]"
-YELLOW="\[\e[0;33m\]"
-CLR_END="\[\e[m\]"
-
-case "$(whoami)" in
-    vagrant)
-	user_host_color="${YELLOW}"
-	cwd_color="${RED}"
-	prompt_color="${CYAN}"
-	git_color="${GREEN}"
-	;;
-    root)
-	user_host_color="${RED}"
-	cwd_color="${RED}"
-	prompt_color="${RED}"
-	git_color="${RED}"
-	;;
-    *)
-	user_host_color="${CYAN}"
-	cwd_color="${YELLOW}"
-	prompt_color="${RED}"
-	git_color="${GREEN}"
-esac
-user_host="${user_host_color}\u@\h ${CLR_END}"
-cwd="${cwd_color}\w${CLR_END}"
-prompt="\n  ${prompt_color}>${CLR_END} "
-git_prompt="${git_color}${GIT_BRANCH}${CLR_END}"
-
-function timer_start {
-  timer=${timer:-$SECONDS}
-}
-
-function timer_stop {
-  timer_show=$(($SECONDS - $timer))
-  unset timer
-}
-
-trap 'timer_start' DEBUG
-
-if [ "$PROMPT_COMMAND" == "" ]; then
-  PROMPT_COMMAND="timer_stop"
-else
-  PROMPT_COMMAND="$PROMPT_COMMAND; timer_stop"
-fi
-
-export PS1="\n[\$?] \${timer_show}s \t ${user_host}${cwd}${git_prompt}${prompt}"
-
 export NODE_PATH=~/.npm
 
 alias run='npm run --silent'
@@ -225,3 +156,6 @@ export NVM_DIR=/Users/$(whoami)/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export JSBIN_CONFIG=~/.jsbin/config.local.json
+
+# added by travis gem
+[ -f /Users/mbrandt/.travis/travis.sh ] && source /Users/mbrandt/.travis/travis.sh
