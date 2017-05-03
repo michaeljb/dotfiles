@@ -76,7 +76,7 @@ __prompt_command() {
     __prompt " "
 
     # show how long the last command took to run
-    __prompt "\${timer_show}s" "${BLUE}"
+    __prompt "\${timer_show}" "${BLUE}"
 
     __prompt " "
 
@@ -106,12 +106,26 @@ __prompt_command() {
 }
 
 
+function timer_result() {
+    ((h=${1}/3600))
+    ((m=(${1}%3600)/60))
+    ((s=${1}%60))
+
+    if [ "${m}" = "0" ] && [ "${h}" = "0" ]; then
+	printf "(%02d)" $s
+    elif [ "${h}" = "0" ]; then
+	printf "(%02d:%02d)" $m $s
+    else
+	printf "(%02d%:02d:%02d)" $h $m $s
+    fi
+}
+
 function timer_start {
   timer=${timer:-$SECONDS}
 }
 
 function timer_stop {
-  timer_show=$(($SECONDS - $timer))
+  timer_show=$(timer_result $(($SECONDS - $timer)))
   unset timer
 }
 
