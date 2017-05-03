@@ -159,3 +159,7 @@ export JSBIN_CONFIG=~/.jsbin/config.local.json
 
 # added by travis gem
 [ -f /Users/mbrandt/.travis/travis.sh ] && source /Users/mbrandt/.travis/travis.sh
+
+# stop having weird characters like "00~" show up when pasting into iterm
+# https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31#issuecomment-55966569
+# printf '\e[?2004l'
