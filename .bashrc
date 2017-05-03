@@ -1,5 +1,3 @@
-source ~/.ps1
-
 system=$(uname -a | awk '{print $1}')
 
 case "$system" in
@@ -159,6 +157,8 @@ export JSBIN_CONFIG=~/.jsbin/config.local.json
 
 # added by travis gem
 [ -f /Users/mbrandt/.travis/travis.sh ] && source /Users/mbrandt/.travis/travis.sh
+
+source ~/.ps1
 
 # stop having weird characters like "00~" show up when pasting into iterm
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31#issuecomment-55966569
