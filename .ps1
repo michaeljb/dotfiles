@@ -116,7 +116,7 @@ function timer_result() {
     elif [ "${h}" = "0" ]; then
 	printf "(%02d:%02d)" $m $s
     else
-	printf "(%02d%:02d:%02d)" $h $m $s
+	printf "(%02d:%02d:%02d)" $h $m $s
     fi
 }
 
