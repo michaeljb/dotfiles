@@ -11,6 +11,7 @@
 # curl -O https://raw.githubusercontent.com/michaeljb/dotfiles/dev-vm/dev-vm.sh
 # chmod u+x dev-vm.sh
 # ./dev-vm.sh
+set -xe
 
 sudo add-apt-repository ppa:ubuntu-elisp/ppa
 sudo apt-get update
