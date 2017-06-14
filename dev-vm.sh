@@ -46,3 +46,5 @@ sudo sh -c "curl -L https://github.com/docker/compose/releases/download/1.13.0/d
 sudo chmod +x /usr/local/bin/docker-compose
 
 sudo systemctl restart sshd.service
+
+mkdir ~/projects
