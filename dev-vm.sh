@@ -2,7 +2,10 @@
 # - set up VirtualBox guest additions
 # - set up bridged network in Virtualbox settings
 # - set up github ssh keys
+
+sudo groupadd docker
 sudo usermod -aG sudo ${USER}
+sudo usermod -aG docker ${USER}
 sudo sh -c "echo \"$USER ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
 
 sudo add-apt-repository ppa:ubuntu-elisp/ppa
@@ -42,6 +45,5 @@ sudo apt-get install -y docker-ce
 sudo sh -c "curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-$(uname -s)-$(uname -m) > /usr/local/bin/docker-compose"
 sudo chmod +x /usr/local/bin/docker-compose
 
-sudo groupadd docker
 
 echo "log out and log back in for the group changes to take effect"
