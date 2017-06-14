@@ -7,6 +7,7 @@
 # sudo usermod -aG sudo ${USER}
 # sudo usermod -aG docker ${USER}
 # sudo sh -c "echo \"$USER ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
+# log out and log back in so user group stuff takes effect
 # curl -O https://raw.githubusercontent.com/michaeljb/dotfiles/dev-vm/dev-vm.sh
 # chmod u+x dev-vm.sh
 # ./dev-vm.sh
@@ -46,6 +47,3 @@ sudo apt-get install -y docker-ce
 
 sudo sh -c "curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-$(uname -s)-$(uname -m) > /usr/local/bin/docker-compose"
 sudo chmod +x /usr/local/bin/docker-compose
-
-
-echo "log out and log back in for the group changes to take effect"
