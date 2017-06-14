@@ -7,10 +7,13 @@
 # sudo usermod -aG sudo ${USER}
 # sudo usermod -aG docker ${USER}
 # sudo sh -c "echo \"$USER ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
+#
 # log out and log back in so user group stuff takes effect
+#
 # curl -O https://raw.githubusercontent.com/michaeljb/dotfiles/dev-vm/dev-vm.sh
 # chmod u+x dev-vm.sh
 # ./dev-vm.sh
+
 set -xe
 
 sudo add-apt-repository ppa:ubuntu-elisp/ppa
@@ -19,14 +22,10 @@ sudo apt-get upgrade -y
 
 sudo apt-get install -y emacs-snapshot git tmux openssh-server apt-transport-https ca-certificates software-properties-common
 
-# clone the basics
 git clone git@github.com:michaeljb/dotfiles.git ~/dotfiles
 git clone git@github.com:michaeljb/.emacs.d.git ~/.emacs.d
-
-# setup dotfiles
 ~/dotfiles/all.sh
 
-# need to install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 if [[ "$(sudo apt-key fingerprint 0EBFCD88 | grep Key)" != *"9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88"* ]]; then
