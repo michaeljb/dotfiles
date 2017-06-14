@@ -32,8 +32,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 if [[ "$(sudo apt-key fingerprint 0EBFCD88 | grep Key)" != *"9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88"* ]]; then
     echo "Docker key fingerprint does not match official fingerprint."
-    echo
-    "https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository"
+    echo "https://docs.docker.com/engine/installation/linux/ubuntu/#install-using-the-repository"
     exit 1
 fi
 
