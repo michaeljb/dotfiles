@@ -2,11 +2,14 @@
 # - set up VirtualBox guest additions
 # - set up bridged network in Virtualbox settings
 # - set up github ssh keys
+# - sudo apt-get update && sudo apt-get install -y curl
+# - curl -O https://raw.githubusercontent.com/michaeljb/dotfiles/dev-vm/dev-vm.sh
+# ./dev-vm.sh
 
-sudo groupadd docker
-sudo usermod -aG sudo ${USER}
-sudo usermod -aG docker ${USER}
-sudo sh -c "echo \"$USER ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
+#sudo groupadd docker
+#sudo usermod -aG sudo ${USER}
+#sudo usermod -aG docker ${USER}
+#sudo sh -c "echo \"$USER ALL=(ALL) NOPASSWD:ALL\" >> /etc/sudoers"
 
 sudo add-apt-repository ppa:ubuntu-elisp/ppa
 sudo apt-get update
@@ -14,7 +17,7 @@ sudo apt-get upgrade -y
 
 sudo apt-get install -y \
     emacs-snapshot git tmux openssh-server \  # basic dev tools
-    apt-transport-https ca-certificates curl software-properties-common  # docker reqs
+    apt-transport-https ca-certificates software-properties-common  # docker reqs
 
 
 # clone the basics
