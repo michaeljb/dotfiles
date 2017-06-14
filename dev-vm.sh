@@ -16,10 +16,7 @@ sudo add-apt-repository ppa:ubuntu-elisp/ppa
 sudo apt-get update
 sudo apt-get upgrade -y
 
-sudo apt-get install -y \
-    emacs-snapshot git tmux openssh-server \  # basic dev tools
-    apt-transport-https ca-certificates software-properties-common  # docker reqs
-
+sudo apt-get install -y emacs-snapshot git tmux openssh-server apt-transport-https ca-certificates software-properties-common
 
 # clone the basics
 git clone git@github.com:michaeljb/dotfiles.git ~/dotfiles
