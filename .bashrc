@@ -70,12 +70,12 @@ function vssh() {
     # remove port
     host=$(echo $host | sed -e 's/:[0-9]*$//g')
 
-    cmd="ssh -Y -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host"
+    cmd="ssh -Y -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host -A"
 
     shift
 
-    echo -e $cmd "$@"
-    $cmd "$@"
+    echo -e ssh -Y -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host -A "$@"
+    ssh -Y -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host -A "$@"
 }
 
 # get vm hostnames
