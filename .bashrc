@@ -149,7 +149,7 @@ export PATH="$PATH:$HOME/anaconda3/bin"
 
 (which thefuck > /dev/null) && eval "$(thefuck --alias)"
 
-export NVM_DIR=/Users/$(whoami)/.nvm
+export NVM_DIR=${HOME}/.nvm
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
