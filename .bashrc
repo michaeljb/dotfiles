@@ -137,6 +137,26 @@ function vmssh() {
     ssh -X vagrant@$ENVIRONMENT.$APP.apps.int.nsidc.org "$@"
 }
 
+# courtesy Daniel Crumly
+function vmlookup {
+    if [ $# -lt 2 ]; then
+        echo "vmlookup IP zone";
+        return 1;
+    fi;
+
+    echo "$1" | grep $1;
+
+    hostname=`vagrant nsidc dns print-records A --zone $2.int.nsidc.org | grep -B 3 $1 | head -1 | awk '{print $2}'`;
+    if [ "$hostname" = "" ]; then
+        echo "IP address $1 not found.";
+        return 1;
+    fi;
+
+    echo " host: $hostname" | grep host;
+    vagrant nsidc dns print-records CNAME --zone $2.int.nsidc.org | grep -B 3 $hostname | grep fqdn;
+    vagrant nsidc dns print-records TXT --zone $2.int.nsidc.org | grep -A 5 $hostname | grep txtdata;
+}
+
 # debugging for vagrant-nsidc
 export NSIDC_PLUGIN_LOG=debug
 
@@ -163,3 +183,18 @@ source ~/.ps1
 # stop having weird characters like "00~" show up when pasting into iterm
 # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31#issuecomment-55966569
 # printf '\e[?2004l'
+
+case "$system" in
+    Darwin)
+	color_flag="-G"
+	;;
+    Linux)
+	color_flag="--color"
+	;;
+    *)
+	color_flag=""
+esac
+
+# sudo add-apt-repository -y ppa:kelleyk/emacs
+# sudo apt-get update
+# sudo apt-get install -y emacs25
