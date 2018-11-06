@@ -199,3 +199,8 @@ esac
 # sudo add-apt-repository -y ppa:kelleyk/emacs
 # sudo apt-get update
 # sudo apt-get install -y emacs25
+
+function dockernuke() {
+    docker stop $(docker ps --all --quiet)
+    docker system prune --all --force
+}
