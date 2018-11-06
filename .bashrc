@@ -11,8 +11,11 @@ case "$system" in
 	color_flag=""
 esac
 
-alias ll="ls -hlF $color_flag"
-alias l="ll -A"
+LS_FLAGS="-hlF $color_flag"
+
+alias ll="ls ${LS_FLAGS}"
+alias l="ls ${LS_FLAGS} -A"
+alias lt="ls ${LS_FLAGS} -A -tr"
 
 if [ -e "/Applications/Hex Fiend.app" ]; then
     alias hex='open -a "/Applications/Hex Fiend.app"'
