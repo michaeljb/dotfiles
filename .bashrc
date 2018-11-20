@@ -5,7 +5,7 @@ case "$system" in
 	color_flag="-G"
 	;;
     Linux)
-	color_flag="--color"
+	color_flag="--color=always"
 	;;
     *)
 	color_flag=""
@@ -16,6 +16,7 @@ LS_FLAGS="-hlF $color_flag"
 alias ll="ls ${LS_FLAGS}"
 alias l="ls ${LS_FLAGS} -A"
 alias lt="ls ${LS_FLAGS} -A -tr"
+alias l.="ls ${LS_FLAGS} -a | head -3 | tail -2"
 
 if [ -e "/Applications/Hex Fiend.app" ]; then
     alias hex='open -a "/Applications/Hex Fiend.app"'
