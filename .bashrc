@@ -201,6 +201,10 @@ esac
 # sudo apt-get update
 # sudo apt-get install -y emacs25
 
+# https://askubuntu.com/questions/969053/map-caps-lock-to-control-on-ubuntu-17-10
+# change caps lock to control in ubuntu 18
+# setxkbmap -option ctrl:nocaps
+
 function dockernuke() {
     docker stop $(docker ps --all --quiet)
     docker system prune --all --force
