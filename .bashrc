@@ -11,12 +11,31 @@ case "$system" in
 	color_flag=""
 esac
 
+
+
+###################
+# ls modification #
+###################
+
 LS_FLAGS="-hlF $color_flag"
 
-alias ll="ls ${LS_FLAGS}"
-alias l="ls ${LS_FLAGS} -A"
-alias lt="ls ${LS_FLAGS} -A -tr"
-alias l.="ls ${LS_FLAGS} -a | head -3 | tail -2"
+export CLICOLOR=true
+export CLICOLOR_FORCE=true
+
+function ll {
+    ls ${LS_FLAGS} $@ | grep -v .DS_Store
+}
+
+# -a - show all files
+# -A - show 'almost all' files - show .files except . and ..
+alias l="ll ${LS_FLAGS} -A"
+alias lt="ll ${LS_FLAGS} -A -tr"
+
+#######
+# end #
+#######
+
+
 
 if [ -e "/Applications/Hex Fiend.app" ]; then
     alias hex='open -a "/Applications/Hex Fiend.app"'
