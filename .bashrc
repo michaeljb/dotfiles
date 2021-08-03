@@ -19,11 +19,12 @@ esac
 
 LS_FLAGS="-hlF $color_flag"
 
-export CLICOLOR=true
-export CLICOLOR_FORCE=true
+unset CLICOLOR
+# export CLICOLOR=true
+# export CLICOLOR_FORCE=true
 
 function ll {
-    ls ${LS_FLAGS} $@ | grep -v .DS_Store
+    ls ${LS_FLAGS} $@ # | grep -v .DS_Store
 }
 
 # -a - show all files
@@ -71,6 +72,7 @@ function gitprune() {
 
 alias vn='vagrant nsidc'
 alias bvn='bundle exec vagrant nsidc'
+alias bv='bundle exec vagrant'
 
 if [ $(which bundle) ]; then
     alias be='bundle exec'
@@ -101,14 +103,30 @@ function vssh() {
     ssh -Y -i $HOME/.ssh/id_rsa_vagrant_vsphere vagrant@$host -A "$@"
 }
 
+function getvmname() {
+    env=$1
+
+    vmname="${env}"
+
+    if [ "${env}" = "dev" ]; then
+        vmname="${vmname}-${USER}"
+    fi
+
+    echo $vmname
+}
+
 # get vm hostnames
 function gethostname() {
     env=$1
 
-    hostname=$(cat .vagrant-$env/machines/default/vsphere-nsidc/nsidc-machine.yaml | grep hostname | awk '{print $2}')
+    vmname=$(getvmname $env)
+
+    hostname=$(cat .vagrant/machines/${vmname}/vsphere-nsidc/nsidc-machine.yaml | grep hostname | awk '{print $2}')
 
     echo $hostname
 }
+
+
 
 # vssh to vm based on environment
 function vsshe() {
@@ -125,7 +143,8 @@ function vcenter() {
 
 export TERM=xterm-256color
 
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
+# export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/sbin:$HOME/local:$PATH"
 
 export PATH="$PATH:$HOME/local/git-hooks"
@@ -135,7 +154,7 @@ export PATH=$PATH:$HOME/.npm
 
 export PATH="$PATH:$HOME/projects/git-hooks"
 
-COMPLETION=/usr/local/etc/bash_completion.d/
+COMPLETION=/usr/local/etc/bash_completion.d
 if [ -d "$COMPLETION" ]; then
     for i in `ls $COMPLETION`; do
 	source $COMPLETION/$i
@@ -190,9 +209,21 @@ fi
 # conda for python packaging/env
 export PATH="$PATH:$HOME/anaconda3/bin"
 
-export NVM_DIR=${HOME}/.nvm
 
+# NVM
+export NVM_DIR=${HOME}/.nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+## NVM (experimental) - from jkovarik
+export NVM_DIR="$HOME/.nvm"
+. "${NVM_DIR}/nvm.sh"
+npm_new_directory() {
+  if [[ $PWD == $PREV_PWD ]]; then
+    return
+  fi
+  PREV_PWD=$PWD
+  [[ -f ".nvmrc" ]] && nvm use
+}
+
 
 export JSBIN_CONFIG=~/.jsbin/config.local.json
 
@@ -216,9 +247,7 @@ case "$system" in
 	color_flag=""
 esac
 
-# sudo add-apt-repository -y ppa:kelleyk/emacs
-# sudo apt-get update
-# sudo apt-get install -y emacs25
+# sudo add-apt-repository -y ppa:kelleyk/emacs && sudo apt-get update && sudo apt-get install -y emacs25 && emacs -nw .
 
 # https://askubuntu.com/questions/969053/map-caps-lock-to-control-on-ubuntu-17-10
 # change caps lock to control in ubuntu 18
@@ -228,3 +257,49 @@ function dockernuke() {
     docker stop $(docker ps --all --quiet)
     docker system prune --all --force
 }
+
+# generic help--open man page if available, or add --version and pipe to less
+# to "simulate" a man page
+function m() {
+    man $1 || ($1 --help | less)
+}
+
+# source ./ssh-ecs.sh
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+
+AWS_SDK_LOAD_CONFIG=1
+# AWS_PROFILE=sandbox  # for now, sandbox is default in ~/.aws/credentials
+AWS_REGION=us-west-2
+export  AWS_SDK_LOAD_CONFIG
+# export AWS_PROFILE
+export AWS_REGION
+
+alias tf=terraform
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+awsjqevent() {
+    TMP_DIR=/tmp/awsevents
+    mkdir -p ${TMP_DIR}
+
+    event_log=${TMP_DIR}/$1.json
+
+    # download event log from AWS, unless we previously downloaded it
+    if [ ! -f ${event_log} ]; then
+        aws s3 cp s3://nsidc-cumulus-dev-internal/events/$1 ${event_log} > /dev/null 2>&1
+    fi
+
+    # if it's an event we downloaded a while ago, update the date so it doesn't
+    # get cleaned up
+    touch ${event_log}
+
+    # feed the event to jq for nice formatting/accessing only certain keys, etc.
+    cat ${event_log} | jq #"$2"
+
+    # clean up any events more than a week old to keep the size of /tmp under control
+    find ${TMP_DIR} -type f -mtime +7 | xargs rm -fv
+}
+
+# rvm
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
