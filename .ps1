@@ -89,6 +89,7 @@ __prompt_command() {
     __prompt "\u@\h " "${user_host_color}"
 
     # cwd
+    __prompt "\n  "
     __prompt "\w" "${cwd_color}"
 
     # GIT
@@ -100,6 +101,10 @@ __prompt_command() {
     # here when setting PROMPT_COMMAND
     if [ ! -z "${CONDA_DEFAULT_ENV}" ]; then
     	__prompt "(${CONDA_DEFAULT_ENV}) " "${PURPLE}"
+    fi
+    # virtualenv
+    if [ ! -z "${VIRTUAL_ENV}" ]; then
+    	__prompt "($(basename ${VIRTUAL_ENV})) " "${PURPLE}"
     fi
 
     __prompt "> " "${RED}"
