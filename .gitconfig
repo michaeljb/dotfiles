@@ -22,3 +22,34 @@
 	diffFilter = diff-highlight
 [magit]
 	hideCampaign = true
+[secrets]
+        # aws-provider official
+        providers = git secrets --aws-provider
+	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+	allowed = AKIAIOSFODNN7EXAMPLE
+	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+        # michaeljb aws addons
+        patterns = arn:.*:.*:.*:[0-9]{4}-?[0-9]{4}-?[0-9]{4}
+        patterns = 4828\\-?2984\\-?5746
+        patterns = 9670\\-?1302\\-?6755
+        patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)?_?(ID|id|Id)?(\"|')?.*(:|=>|=).*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+
+        allowed = 123456789012
+
+        allowed = nsidc-sb-message-template-cmr-password20200305193557394200000004
+
+        # slack links
+        allowed = p1594078420170000
+        allowed = p1594078420170000
+
+        # random test value for granuleSize
+        allowed = 227.254168510437
+
+
+[init]
+	templateDir = /Users/mbrandt/.git-templates/git-secrets
+[credential]
+	helper = osxkeychain

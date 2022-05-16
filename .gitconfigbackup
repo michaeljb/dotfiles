@@ -1,0 +1,20 @@
+[user]
+	name = Michael Brandt
+	email = michaelbrandt5@gmail.com
+	email = michael.j.brandt@colorado.edu
+	email = mbrandt@colorado.edu
+[color]
+	ui = true
+[core]
+	pager = less --tabs=2
+	excludesfile = ~/.gitignore
+	editor = emacsclient -nw
+[push]
+	default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[help]
+	autocorrect = 1
+[rebase]
+	autosquash = true

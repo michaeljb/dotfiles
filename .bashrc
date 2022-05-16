@@ -143,7 +143,7 @@ function vcenter() {
 
 export TERM=xterm-256color
 
-# export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/opt:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/sbin:$HOME/local:$PATH"
 
@@ -153,6 +153,8 @@ export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:$HOME/.npm
 
 export PATH="$PATH:$HOME/projects/git-hooks"
+
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 COMPLETION=/usr/local/etc/bash_completion.d
 if [ -d "$COMPLETION" ]; then

@@ -17,6 +17,11 @@ export PATH="$PATH:/Users/mbrandt/.local/bin"
 # Python - pyenv
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
-
+eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$HOME/.pyenv"
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# https://stackoverflow.com/a/66483524
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
